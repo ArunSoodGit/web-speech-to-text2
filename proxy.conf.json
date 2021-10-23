@@ -1,0 +1,8 @@
+{
+  "/pjp-api/*": {
+    "target": "https://api.gios.gov.pl/pjp-api/rest/station/findAll",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
