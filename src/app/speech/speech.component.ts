@@ -22,7 +22,6 @@ export class SpeechComponent implements OnInit {
   startService(): void {
     this.service.start();
   }
-
   stopService(): void {
     this.service.stop();
     this.textCorrectionService.correctText(this.text).subscribe(data =>
