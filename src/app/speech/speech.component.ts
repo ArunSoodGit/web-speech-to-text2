@@ -8,7 +8,6 @@ import {TextCorrectionService} from '../text-correction.service';
   styleUrls: ['./speech.component.scss']
 })
 export class SpeechComponent implements OnInit {
-  text = '';
 
   constructor(private textCorrectionService: TextCorrectionService,
               public service: VoiceRecognitionService
@@ -24,7 +23,7 @@ export class SpeechComponent implements OnInit {
   }
   stopService(): void {
     this.service.stop();
-    this.textCorrectionService.correctText(this.text).subscribe(data =>
+    this.textCorrectionService.correctText(this.service.text).subscribe(data =>
       console.log(data));
   }
 }
