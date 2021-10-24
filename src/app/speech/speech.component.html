@@ -1,9 +1,16 @@
-<div style="margin: 100px;">
-  <h1>Voice recognition</h1>
+<div class="container">
+  <h1>Zamiana mowy na tekst</h1>
   <div class="alert alert-primary" role="alert">
     <p>{{service.text2}}</p>
   </div>
-  <button style="margin: 10px;" (click)="startService()">Start</button>
-  <button style="margin: 10px;" (click)="stopService()">Stop</button>
-  <p>{{service.text}}</p>
+  <div class="form-group purple-border">
+    <textarea rows="10"  class="form-control" id="exampleFormControlTextarea4" >{{service.text2}}</textarea>
+  </div>
+  <div style="text-align: center"> <button (click)="startService()" [ngClass]="micClass" ><i class="bi bi-mic"></i></button></div>
+
+
+  <button class="btn btn-success" (click)="textCorrection()">Korekcja tekstu</button>
+
+
+  <div style="background-color: skyblue" class="row">{{service.finaleText}}</div>
 </div>

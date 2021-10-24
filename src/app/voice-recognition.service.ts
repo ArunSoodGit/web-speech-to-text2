@@ -12,7 +12,8 @@ export class VoiceRecognitionService {
   isStoppedSpeechRecog = false;
   public text = '';
   tempWords;
-  text2;
+  text2 = '';
+  finaleText;
 
   constructor(private textCorrectionService: TextCorrectionService) {
   }
@@ -21,6 +22,7 @@ export class VoiceRecognitionService {
 
     this.recognition.interimResults = true;
     this.recognition.lang = 'pl-PL';
+    this.recognition.continuous = true;
 
     this.recognition.addEventListener('result', (e) => {
       const transcript = Array.from(e.results)
@@ -57,7 +59,7 @@ export class VoiceRecognitionService {
   }
 
   wordConcat(): void {
-    this.text = this.text + ' ' + this.tempWords + '.';
+    this.text = this.text + ' ' + this.tempWords;
     this.tempWords = '';
 
   }
