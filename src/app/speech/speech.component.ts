@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {VoiceRecognitionService} from '../voice-recognition.service';
 import {TextCorrectionService} from '../text-correction.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import {AzureSpeechService} from '../azure-speech.service';
 
 @Component({
   selector: 'app-speech',
@@ -19,25 +20,41 @@ export class SpeechComponent implements OnInit {
   micClass = 'mic';
 
   constructor(private textCorrectionService: TextCorrectionService,
-              public service: VoiceRecognitionService
+              public service: VoiceRecognitionService, private azureService: AzureSpeechService
   ) {
     this.service.init();
   }
 
   ngOnInit(): void {
+
   }
 
-  startService(): void {
-    if (this.record === true) {
-      this.record = false;
-      this.micClass = 'mic_anim';
-      this.service.start();
-    } else {
-      this.record = true;
-      this.micClass = 'mic';
-      this.service.stop();
-    }
+  public test3(): void {
+    this.azureService.startContinuousRecognition();
   }
+
+  public async Speech2Text(): Promise<any> {
+    await this.azureService.speechToText().then((res: string) => {
+      console.log(res);
+    })
+      .catch((res: string) => {
+        // this._snackBar.open(res, "okay", { duration: 3000 });
+      })
+      .finally(() => console.log('test'));
+  }
+
+
+  // startService(): void {
+  //   if (this.record === true) {
+  //     this.record = false;
+  //     this.micClass = 'mic_anim';
+  //     this.azureService.startContinuousRecognition();
+  //   } else {
+  //     this.record = true;
+  //     this.micClass = 'mic';
+  //     this.azureService.stopRecognition();
+  //   }
+  // }
 
   stopService(): void {
     this.service.stop();

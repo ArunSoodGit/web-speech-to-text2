@@ -6,7 +6,7 @@
   <div class="form-group purple-border">
     <textarea rows="10"  class="form-control" id="exampleFormControlTextarea4" >{{service.text2}}</textarea>
   </div>
-  <div style="text-align: center"> <button (click)="startService()" [ngClass]="micClass" ><i class="bi bi-mic"></i></button></div>
+  <div style="text-align: center"> <button (click)="test3()" [ngClass]="micClass" ><i class="bi bi-mic"></i></button></div>
 
 
   <button class="btn btn-success" (click)="textCorrection()">Korekcja tekstu</button>
@@ -14,3 +14,53 @@
 
   <div style="background-color: skyblue" class="row">{{service.finaleText}}</div>
 </div>
+
+
+<!--<h1 class="text-center container-heading">Speech To Text Conversion</h1>-->
+<!--<div id="toolbar">-->
+<!--  <button mat-mini-fab (click)="onStart()" *ngIf="!speechHasStarted" color="primary"-->
+<!--          matTooltip="click on the microphone to start" matTooltipShowDelay="1000">-->
+<!--    <mat-icon>mic_off</mat-icon>-->
+<!--  </button>-->
+<!--  <button mat-mini-fab (click)="onStop()" *ngIf="speechHasStarted" color="warn"-->
+<!--          matTooltip="click on the microphone to stop" matTooltipShowDelay="1000">-->
+<!--    <mat-icon>mic</mat-icon>-->
+<!--  </button>-->
+
+<!--  <button mat-mini-fab color="warn" [disabled]="!hasContent || speechHasStarted" (click)="onClearContent()"-->
+<!--          matTooltip="clear transcript" matTooltipShowDelay="1000">-->
+<!--    <mat-icon>clear_all</mat-icon>-->
+<!--  </button>-->
+<!--</div>-->
+<!--<div class="text-center">Click on the microphone icon and begin speaking for as long as you like.-->
+<!--</div>-->
+<!--<div class="ConversationContainer">-->
+<!--  <div class="transcriptContainer">-->
+<!--    <div class="text-center ">Transcript</div>-->
+<!--    <div #transcriptContainer class="transcript">{{transcript}}</div>-->
+<!--    <div class="text-center ">-->
+<!--      <mat-form-field appearance="outline">-->
+<!--        <mat-label>Language</mat-label>-->
+<!--        <mat-select required [disabled]="speechHasStarted" [(ngModel)]="selectedLanguage"-->
+<!--                    matTooltip="transcript language" matTooltipShowDelay="1000">-->
+<!--          <mat-option></mat-option>-->
+<!--          <mat-option [value]="option.value" *ngFor="let option of foods">{{ option.viewValue }}</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="tranlationContainer">-->
+<!--    <div class="text-center ">Translation</div>-->
+<!--    <div #tranlationContainer class="translation">{{transcript}}</div>-->
+<!--    <div class="text-center">-->
+<!--      <mat-form-field appearance="outline">-->
+<!--        <mat-label>Language</mat-label>-->
+<!--        <mat-select required [disabled]="speechHasStarted" [(ngModel)]="selectedLanguage"-->
+<!--                    matTooltip="transcript language" matTooltipShowDelay="1000">-->
+<!--          <mat-option></mat-option>-->
+<!--          <mat-option [value]="option.value" *ngFor="let option of foods">{{ option.viewValue }}</mat-option>-->
+<!--        </mat-select>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div> -->
