@@ -1,0 +1,1 @@
+{"ast":null,"code":"// Copyright (c) Microsoft Corporation. All rights reserved.\n// Licensed under the MIT license.\nimport { EventType } from \"../common/Exports\";\n/**\n * Define event severity types for setting logging output.\n * @class LogLevel\n */\n\nexport { EventType as LogLevel }; //# sourceMappingURL=LogLevel.js.map","map":null,"metadata":{},"sourceType":"module"}

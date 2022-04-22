@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import {AzureSpeechService} from '../services/azure-speech.service';
+import {ContentChange, SelectionChange} from 'ngx-quill';
 
 @Component({
   selector: 'app-speech',
@@ -51,4 +52,13 @@ export class SpeechComponent {
   //     console.log('data response', res.text);
   //   });
   // }
+  quillConfig: any;
+
+  onSelectionChanged($event: SelectionChange) {
+    console.log(this.azureService.text3);
+  }
+
+  onContentChanged($event: ContentChange) {
+
+  }
 }

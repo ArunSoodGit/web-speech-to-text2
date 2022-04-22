@@ -11,10 +11,14 @@
   <div #selfClosingAlert class="alert alert-success" role="alert">
     <p>{{azureService.text2}}</p>
   </div>
-  <div class="form-group purple-border">
-    <textarea rows="10" class="form-control" id="exampleFormControlTextarea4">{{azureService.text3}}</textarea>
-  </div>
-  <quill-editor [styles]="{height: '200px'}"></quill-editor>
+<!--  <div class="form-group purple-border">-->
+<!--    <textarea rows="10" class="form-control" id="exampleFormControlTextarea4">{{azureService.text3}}</textarea>-->
+<!--  </div>-->
+
+  <quill-editor [styles]="{height: '200px'}" [(ngModel)]="azureService.text3"
+                [modules]="quillConfig"
+                (onSelectionChanged)="onSelectionChanged($event)"
+                (onContentChanged)="onContentChanged($event)"></quill-editor>
   <div style="text-align: center">
     <button (click)="startService()" [ngClass]="micClass"><i class="bi bi-mic"></i></button>
   </div>

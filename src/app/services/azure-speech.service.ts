@@ -35,14 +35,14 @@ export class AzureSpeechService {
       this.speechRecognizer.startContinuousRecognitionAsync(() => {
         console.log('Recognition started');
         this.speechRecognizer.recognizing = (s, e) => {
-          console.log('recognizing text', e.result.text);
+          // console.log('recognizing text', e.result.text);
           this.text2 = e.result.text;
         };
         this.asRecognitionStarted = true;
       });
       this.speechRecognizer.recognized = (s, e) => {
         if (e.result.reason === ResultReason.RecognizedSpeech) {
-          console.log(`RECOGNIZED: Text=${e.result.text}`);
+          // console.log(`RECOGNIZED: Text=${e.result.text}`);
           this.text3 = this.text3 + e.result.text;
           // const subs = generateSubtitles(e.result, settings)
           // results.push(...subs)
