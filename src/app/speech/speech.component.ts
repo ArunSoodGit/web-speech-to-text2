@@ -1,81 +1,54 @@
-import {Component, OnInit} from '@angular/core';
-import {VoiceRecognitionService} from '../voice-recognition.service';
-import {TextCorrectionService} from '../text-correction.service';
+import {Component} from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import {AzureSpeechService} from '../azure-speech.service';
+import {AzureSpeechService} from '../services/azure-speech.service';
 
 @Component({
   selector: 'app-speech',
   templateUrl: './speech.component.html',
   styleUrls: ['./speech.component.scss']
 })
-export class SpeechComponent implements OnInit {
+export class SpeechComponent {
+  languages = [
+    {code: 'pl-PL', language: 'Polish (Poland)'},
+    {code: 'en-GB', language: 'English (United Kingdom)'},
+    {code: 'en-US', language: 'English (United States)'},
+    {code: 'de-DE', language: 'German (Germany)'},
+  ];
+
+  selectedLanguage = 'pl-PL';
   public Editor = ClassicEditor;
-  name = this.service.text2;
   record = true;
   public config = {
     language: 'pl'
   };
   test: any;
   micClass = 'mic';
-
-  constructor(private textCorrectionService: TextCorrectionService,
-              public service: VoiceRecognitionService, private azureService: AzureSpeechService
-  ) {
-    this.service.init();
-  }
-
-  ngOnInit(): void {
-
-  }
-
-  public test3(): void {
-    this.azureService.startContinuousRecognition();
-  }
-
-  public async Speech2Text(): Promise<any> {
-    await this.azureService.speechToText().then((res: string) => {
-      console.log(res);
-    })
-      .catch((res: string) => {
-        // this._snackBar.open(res, "okay", { duration: 3000 });
-      })
-      .finally(() => console.log('test'));
-  }
-
-
-  // startService(): void {
-  //   if (this.record === true) {
-  //     this.record = false;
-  //     this.micClass = 'mic_anim';
-  //     this.azureService.startContinuousRecognition();
-  //   } else {
-  //     this.record = true;
-  //     this.micClass = 'mic';
-  //     this.azureService.stopRecognition();
-  //   }
   // }
+  speechHasStarted = false;
+  hasContent: boolean;
+  transcript: any;
 
-  stopService(): void {
-    this.service.stop();
-
+  constructor(public azureService: AzureSpeechService) {
   }
 
-  textCorrection(): void {
-    this.textCorrectionService.correctText(this.service.text).subscribe(res => {
-      this.service.finaleText = res.text;
-      console.log('data response', res.text);
-    });
+  startService(): void {
+    if (this.record === true) {
+      this.record = false;
+      this.micClass = 'mic_anim';
+      console.log(this.selectedLanguage);
+      this.azureService.startContinuousRecognition(this.selectedLanguage);
+    } else {
+      this.record = true;
+      this.micClass = 'mic';
+      this.azureService.stopRecognition();
+    }
   }
 
-  onChange(): void {
-    console.log('t');
-    // this.name = this.service.text2;
 
-  }
-
-  ready() {
-    this.name = this.service.text2;
-    console.log('t');
-  }
+  // textCorrection(): void {
+  //   this.textCorrectionService.correctText(this.service.text).subscribe(res => {
+  //     this.service.finaleText = res.text;
+  //     console.log('data response', res.text);
+  //   });
+  // }
 }

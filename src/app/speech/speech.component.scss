@@ -32,14 +32,16 @@ textarea {
   width: 56px !important;
   font-size: 25px;
   color: white;
-  background-color: #4f867a;
-  border-color: #4f867a;
+  border-style: solid;
+  border-color: #80bb6c !important;
+  background-color: #80bb6c; //border-color: #4f867a;
 }
 
 .mic_anim {
   margin-top: 20px;
   margin-bottom: 30px;
   border-radius: 50%;
+  border-style: solid;
   height: 56px !important;
   width: 56px !important;
   font-size: 25px;
@@ -66,4 +68,7 @@ textarea {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
   }
+}
+.alert{
+  margin-top: 20px;
 }

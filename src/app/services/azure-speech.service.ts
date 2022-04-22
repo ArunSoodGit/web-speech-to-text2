@@ -6,7 +6,6 @@ import {
   SpeechConfig,
   SpeechRecognizer
 } from 'microsoft-cognitiveservices-speech-sdk';
-import {HttpClient} from '@angular/common/http';
 
 class SpeechRecognitionResultModel {
   isFinal: boolean;
@@ -18,18 +17,20 @@ class SpeechRecognitionResultModel {
 })
 export class AzureSpeechService {
   asRecognitionStarted: boolean;
-  private speechConfig: SpeechConfig;
+  text2 = '';
+  text3 = '';
   private speechRecognizer: SpeechRecognizer;
-  private text2: string;
+  private speechConfig: SpeechConfig;
 
-  constructor(private httpClient: HttpClient) {
-    this.speechConfig = SpeechConfig.fromSubscription('e02cb196c708407ca4bfc365474b4afa', 'NorthEurope');
-    this.speechConfig.speechRecognitionLanguage = 'pl-PL';
-    this.speechConfig.enableDictation();
-    this.speechRecognizer = new SpeechRecognizer(this.speechConfig);
+  constructor() {
+
   }
 
-  startContinuousRecognition(): void {
+  startContinuousRecognition(selectedLanguage: string): void {
+    this.speechConfig = SpeechConfig.fromSubscription('e02cb196c708407ca4bfc365474b4afa', 'NorthEurope');
+    this.speechConfig.speechRecognitionLanguage = selectedLanguage;
+    this.speechConfig.enableDictation();
+    this.speechRecognizer = new SpeechRecognizer(this.speechConfig);
     try {
       this.speechRecognizer.startContinuousRecognitionAsync(() => {
         console.log('Recognition started');
@@ -42,6 +43,7 @@ export class AzureSpeechService {
       this.speechRecognizer.recognized = (s, e) => {
         if (e.result.reason === ResultReason.RecognizedSpeech) {
           console.log(`RECOGNIZED: Text=${e.result.text}`);
+          this.text3 = this.text3 + e.result.text;
           // const subs = generateSubtitles(e.result, settings)
           // results.push(...subs)
         } else if (e.result.reason === ResultReason.NoMatch) {
@@ -56,12 +58,13 @@ export class AzureSpeechService {
 
   }
 
-  //
-  // stopRecognition(): void  {
-  //   this.recognizer.stopContinuousRecognitionAsync(() => {
-  //     this.recognizer.close();
-  //   });
-  // }
+
+  stopRecognition(): void {
+    this.speechRecognizer.stopContinuousRecognitionAsync(() => {
+      this.speechRecognizer.close();
+    });
+  }
+
   //
   // private handleRecognizingResponse(res: any): void  {
   //   this.speechRecognitionResult.next({isFinal: false, result: res.result});

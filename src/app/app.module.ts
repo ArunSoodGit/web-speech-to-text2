@@ -7,13 +7,17 @@ import { SpeechComponent } from './speech/speech.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
 import {FormsModule} from '@angular/forms';
-import { AzureSpeechComponent } from './azure-speech/azure-speech.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { QuillModule } from 'ngx-quill';
 @NgModule({
   declarations: [
     AppComponent,
     SpeechComponent,
-    AzureSpeechComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +25,13 @@ import { AzureSpeechComponent } from './azure-speech/azure-speech.component';
     HttpClientModule,
     CKEditorModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
+    QuillModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
