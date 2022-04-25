@@ -2,9 +2,21 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-body{
+body {
   margin: 100px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.form-select:focus {
+  border-color: #80bb6c;
+  box-shadow: 0 0 0 0.25rem rgba(171, 218, 156, 0.67);
+}
+

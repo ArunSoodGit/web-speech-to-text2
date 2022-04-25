@@ -2,7 +2,8 @@ import {Component, ElementRef, ViewChild} from '@angular/core';
 import {AzureSpeechService} from '../services/azure-speech.service';
 import {ContentChange, SelectionChange} from 'ngx-quill';
 import jsPDF from 'jspdf';
-import { saveAs } from 'file-saver';
+import {saveAs} from 'file-saver';
+
 @Component({
   selector: 'app-speech',
   templateUrl: './speech.component.html',
@@ -25,7 +26,25 @@ export class SpeechComponent {
   speechHasStarted = false;
   hasContent: boolean;
   transcript: any;
-  quillConfig: any;
+  quillConfig = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+
+      [{'header': 1}, {'header': 2}],               // custom button values
+      [{'list': 'ordered'}, {'list': 'bullet'}],
+      [{'direction': 'rtl'}],                         // text direction
+
+      [{'size': ['small', false, 'large', 'huge']}],  // custom dropdown
+      [{'header': [1, 2, 3, 4, 5, 6, false]}],
+
+      [{'color': []}, {'background': []}],          // dropdown with defaults from theme
+      [{'font': []}],
+      [{'align': []}],
+
+      ['clean'],                                         // remove formatting button
+
+    ]
+  };
 
   constructor(public azureService: AzureSpeechService) {
   }

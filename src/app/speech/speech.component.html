@@ -1,10 +1,10 @@
 <div class="container">
-  <h1 class="text-center container-heading mt-3">Utwórz notatkę</h1>
-  <label for="mySelect">Język</label>
+  <h1 class="text-center container-heading mt-3 create-note-text">Utwórz notatkę</h1>
+  <label for="mySelect" class="language-select-label">Język</label>
 
   <select id="mySelect" class="form-select" aria-label="Default select example" [(ngModel)]="selectedLanguage"
           [disabled]="!record">
-    <option *ngFor="let language of languages" [value]="language.code">
+    <option class="mat-option" *ngFor="let language of languages" [value]="language.code">
       {{language.language}}
     </option>
   </select>

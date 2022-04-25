@@ -14,11 +14,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { QuillModule } from 'ngx-quill';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SpeechComponent,
+    FooterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
